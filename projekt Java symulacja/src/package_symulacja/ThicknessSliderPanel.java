@@ -1,14 +1,9 @@
+/*panel gorny: suwak ustawiajacy grubosc absorbentu*/ 
+
 package package_symulacja;
-
-
-
 
 import javax.swing.*;
 import java.awt.*;
-//import javax.swing.event.ChangeEvent;
-//import javax.swing.event.ChangeListener;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 
 public class ThicknessSliderPanel extends JPanel{
 	
