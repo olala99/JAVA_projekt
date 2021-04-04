@@ -24,5 +24,6 @@ public class AbsorbentButtonsPanel extends JPanel{
     	this.add(buttonAl);
     	this.add(buttonCu);
     	this.add(buttonPb);
+    	//zmiana
 	}
 }
