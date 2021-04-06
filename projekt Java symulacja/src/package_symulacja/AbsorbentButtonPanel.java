@@ -21,7 +21,7 @@ public class AbsorbentButtonsPanel extends JPanel{
     	buttonCu = new CuButton();
     	buttonPb = new PbButton();
     	
-    	chooseAbsorbentLabel = new JLabel("Wybierz absorbent UWAGA ZMIENIAM COS:");
+    	chooseAbsorbentLabel = new JLabel("Wybierz absorbent:");
     	
     	this.setLayout(new FlowLayout());
     	this.add(chooseAbsorbentLabel);
