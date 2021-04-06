@@ -53,7 +53,7 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Color backgroundColor = JColorChooser.showDialog(getParent(), "Wybierz kolor", Color.white);
-				animationPanel.setBackground(backgroundColor);
+				animationPanel.animationPanel.setBackground(backgroundColor);
 				}		
 		});
 		
