@@ -1,5 +1,5 @@
 /*uklad calej ramki + menu */
-
+//Ola
 package package_symulacja;
 
 import javax.swing.*;
