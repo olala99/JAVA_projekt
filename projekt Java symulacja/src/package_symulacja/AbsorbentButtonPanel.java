@@ -1,3 +1,6 @@
+/* panel gorny:
+ * ustawienie przyciskow do wyboru absorbentow*/
+
 package package_symulacja;
 
 import javax.swing.*;
