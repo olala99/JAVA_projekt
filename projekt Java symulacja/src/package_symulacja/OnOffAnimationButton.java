@@ -1,3 +1,4 @@
+/* autorka: Ola */
 package package_symulacja;
 
 import javax.swing.*;
