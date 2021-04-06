@@ -1,15 +1,19 @@
-package package_symulacja;
+/* autorki: Alina i Ola
+ *uklad calej ramki + menu */
 
+package package_symulacja;
 
 import javax.swing.*;
 
 import java.awt.*;
 
-
 public class Frame extends JFrame{
 	
-	private AbsorbentButtonsPanel panel1;
-	private ThicknessSliderPanel panel2;
+	private AbsorbentButtonsPanel absorbentButtonsPanel;
+	private ThicknessSliderPanel sliderPanel;
+	private AnimationPanel animationPanel;
+	private JPanel northPanel;
+	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
 	
 	private JMenu menu;
 	private JMenuBar menuBar;
@@ -20,14 +24,22 @@ public class Frame extends JFrame{
 	
 	public Frame() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    	this.setSize(600,200);
+    	this.setSize(800,500);
+    	this.setLayout(new BorderLayout());
     	
-    	panel1 = new AbsorbentButtonsPanel();
-    	panel2 = new ThicknessSliderPanel();
+    	northPanel = new JPanel();
+    	absorbentButtonsPanel = new AbsorbentButtonsPanel();
+    	sliderPanel = new ThicknessSliderPanel();
+    	absorbtionCoefficientPanel = new AbsorbtionCoefficientPanel();
+    	animationPanel = new AnimationPanel();
+    	this.add(animationPanel, BorderLayout.CENTER);
     	
-    	this.setLayout(new GridLayout(2,1));
-    	this.add(panel1);
-    	this.add(panel2);
+    	northPanel.setLayout(new GridLayout(2,1));
+    	northPanel.add(absorbentButtonsPanel);
+    	northPanel.add(sliderPanel);
+    	this.add(northPanel, BorderLayout.NORTH);
+    	
+		this.add(absorbtionCoefficientPanel,BorderLayout.EAST);
     	
     	menuBar = new JMenuBar();
 		menu = new JMenu("MENU");

@@ -1,21 +1,28 @@
+/* autorka: Ola
+ * panel prawy boczny: 
+ * etykieta "Wspolczynnik ..."
+ * pole tekstowe na wspolczynnik*/
+
 package package_symulacja;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class AbsorbtionCoefficentPanel extends JPanel {
+public class AbsorbtionCoefficientPanel extends JPanel {
 	
 	private JTextField absorptionCoefficientValue;
 	private JLabel coefficientValueLabel;
 	
-	public AbsorbtionCoefficentPanel() {
-		this.setLayout(new GridLayout(9,1));
-		
+	public AbsorbtionCoefficientPanel() {
+		this.setLayout(new GridLayout(7,1));
+		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
 		absorptionCoefficientValue = new JTextField(" ");
-		coefficientValueLabel = new JLabel("Wspoczynnik oslabienia promieniowania: ");
+		coefficientValueLabel = new JLabel("Wspoczynnik oslabienia \n promieniowania:");
 		
 		this.add(coefficientValueLabel);
 		this.add(absorptionCoefficientValue);
-	
+		
 	}
 }
+
