@@ -1,5 +1,6 @@
-/* panel dolny:
- * ustawienie przyciskÛw ON/OFF i "Kolor t≥a ..." */
+/* autorka: Ola
+ * panel dolny:
+ * ustawienie przycisk√≥w ON/OFF i "Kolor t≈Ça ..." */
 
 package package_symulacja;
 
