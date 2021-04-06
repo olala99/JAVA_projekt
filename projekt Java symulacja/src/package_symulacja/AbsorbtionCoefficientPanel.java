@@ -1,4 +1,5 @@
-/* panel prawy boczny: 
+/* autorka: Ola
+ * panel prawy boczny: 
  * etykieta "Wspolczynnik ..."
  * pole tekstowe na wspolczynnik*/
 
