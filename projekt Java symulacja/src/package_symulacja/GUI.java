@@ -1,3 +1,4 @@
+/* autorka: Alina */
 package package_symulacja;
 
 public class GUI {

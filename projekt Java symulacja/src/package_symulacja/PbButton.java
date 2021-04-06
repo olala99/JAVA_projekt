@@ -1,3 +1,5 @@
+/* autorka: Alina */
+
 package package_symulacja;
 
 //import java.awt.*;
