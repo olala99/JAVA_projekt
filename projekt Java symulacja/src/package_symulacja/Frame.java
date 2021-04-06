@@ -1,3 +1,4 @@
+//Alina
 /*uklad calej ramki + menu */
 //Ola
 package package_symulacja;
