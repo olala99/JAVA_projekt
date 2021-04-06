@@ -1,4 +1,5 @@
-/*panel gorny: suwak ustawiajacy grubosc absorbentu*/ 
+/* autorka: Alina
+ * panel gorny: suwak ustawiajacy grubosc absorbentu */ 
 
 package package_symulacja;
 

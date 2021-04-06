@@ -1,5 +1,6 @@
+/* autorki: Alina i Ola
+ *uklad calej ramki + menu */
 
-/*uklad calej ramki + menu */
 
 package package_symulacja;
 

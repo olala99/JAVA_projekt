@@ -1,4 +1,5 @@
-/* panel centralny:
+/* autorka: Ola
+ * panel centralny:
  * panel z tlem do animacji
  * panel z przyciskami kontrolujacymi AnimationControlPanel */
 
