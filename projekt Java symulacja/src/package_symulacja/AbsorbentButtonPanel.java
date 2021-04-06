@@ -1,4 +1,5 @@
-/* panel gorny:
+/* autorka: Alina
+ * panel gorny:
  * ustawienie przyciskow do wyboru absorbentow*/
 
 package package_symulacja;
