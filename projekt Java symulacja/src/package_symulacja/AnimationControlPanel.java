@@ -9,18 +9,18 @@ import javax.swing.*;
 
 public class AnimationControlPanel extends JPanel {
 	
-	private JPanel buttonsPanel;
 	private OnOffAnimationButton buttonOnOff;
 	BackgroundColorButton buttonBGColor;
 	
 	public AnimationControlPanel() {
-		this.setLayout(new FlowLayout());
+		this.setLayout(new GridLayout(2,1));
+		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
 		buttonOnOff = new OnOffAnimationButton();
 		buttonBGColor = new BackgroundColorButton();
 		
 		this.add(buttonBGColor);
-		this.add(Box.createRigidArea(new Dimension(200, 0)));
 		this.add(buttonOnOff);
+		
 	}
 }

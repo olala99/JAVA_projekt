@@ -14,7 +14,7 @@ public class AbsorbtionCoefficientPanel extends JPanel {
 	private JLabel coefficientValueLabel;
 	
 	public AbsorbtionCoefficientPanel() {
-		this.setLayout(new GridLayout(7,1));
+		this.setLayout(new GridLayout(2,1));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
 		absorptionCoefficientValue = new JTextField(" ");
