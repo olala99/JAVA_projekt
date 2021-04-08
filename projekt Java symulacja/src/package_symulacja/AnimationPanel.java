@@ -5,26 +5,34 @@
 
 package package_symulacja;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 import javax.swing.*;
+
+
 
 public class AnimationPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	List<EnergyParticle> particles = new ArrayList<EnergyParticle>();
 
-	JPanel animationPanel;
+	//JPanel animationPanel;
 	
-	public void addEnergyParticle(int x, int y, int d, Color c){
+	public void addEnergyParticle(int x, int y, Color c){
 		EnergyParticle particle = new EnergyParticle();
 		particle.setX(x);
 		particle.setY(y);
-		particle.setD(d);
+		//particle.setD(d);
 		particle.setColor(c);
 		
 		particles.add(particle);		
@@ -37,13 +45,43 @@ public class AnimationPanel extends JPanel {
 			ep.paint(g);
 		}
 	}
+	
+	void moveParticles() {
+
+		ScheduledExecutorService scheduler = Executors
+				.newScheduledThreadPool(2);
+
+		scheduler.scheduleAtFixedRate((new Runnable() {
+
+			@Override
+			public void run() {
+
+				int d = 5;
+				
+				
+				for (EnergyParticle ep : particles) {
+					if(ep.getX() >= d || ep.getX() <0) ep.setVX(-ep.getVX());
+					if(ep.getY() >= d || ep.getY() <0) ep.setVY(-ep.getVY());
+					
+					ep.setX(ep.getX() + ep.getVX());
+					ep.setY(ep.getY() + ep.getVY());
+				}
+				
+				repaint();
+
+			}
+		}), 0, 5, MILLISECONDS);
+		
+	}
 
 	public AnimationPanel() {
-		this.setLayout(new BorderLayout());
-		animationPanel = new JPanel();
-		animationPanel.setBackground(Color.white);
+		//this.setLayout(new BorderLayout());
+		//animationPanel = new JPanel();
+		//animationPanel.setBackground(Color.white);
 		
-		this.add(animationPanel,BorderLayout.CENTER);
+		//this.add(animationPanel,BorderLayout.CENTER);
+		
+		this.setBackground(Color.white);
 	}
 	
 	/*public void addRandomEnergyParticle(){

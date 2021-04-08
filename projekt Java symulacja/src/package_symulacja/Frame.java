@@ -1,11 +1,13 @@
 
 /* autorki: Alina i Ola
+
  *uklad calej ramki + menu */
 
 
 package package_symulacja;
 
 import javax.swing.*;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,15 +22,12 @@ public class Frame extends JFrame{
 	private JPanel northPanel;
 	private JPanel rightPanel;
 	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
-	
-	private JMenu menu;
-	private JMenuBar menuBar;
-	private JMenuItem language;
-	private JMenuItem read;
-	private JMenuItem save;
-	private JMenuItem clean;
+	private Menu menuBar;
 	
 	public Frame() {
+		menuBar = new Menu();
+		this.setJMenuBar(menuBar);
+		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     	this.setSize(800,500);
     	this.setLayout(new BorderLayout());
@@ -40,6 +39,8 @@ public class Frame extends JFrame{
     	sliderPanel = new ThicknessSliderPanel();
     	absorbtionCoefficientPanel = new AbsorbtionCoefficientPanel();
     	animationPanel = new AnimationPanel();
+    	for (int i = 1; i<20 ; i++) animationPanel.addEnergyParticle(1, i, Color.BLACK);
+    	animationPanel.moveParticles();
     	this.add(animationPanel, BorderLayout.CENTER);
     	
     	northPanel.setLayout(new GridLayout(2,1));
@@ -55,27 +56,11 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Color backgroundColor = JColorChooser.showDialog(getParent(), "Wybierz kolor", Color.white);
-				animationPanel.animationPanel.setBackground(backgroundColor);
+				animationPanel.setBackground(backgroundColor);
 				}		
 		});
 		
 		this.add(rightPanel, BorderLayout.EAST);
-		
-    	menuBar = new JMenuBar();
-		menu = new JMenu("MENU");
-		menuBar.add(menu);
-		
-		language = new JMenuItem("Zmien jezyk");
-		read = new JMenuItem("Wczytaj");
-		save = new JMenuItem("Zapisz");
-		clean = new JMenuItem("Wyczysc");
-		
-		menu.add(language);
-		menu.add(read);
-		menu.add(save);
-		menu.add(clean);
-		
-		this.setJMenuBar(menuBar);
 	}
 }
 

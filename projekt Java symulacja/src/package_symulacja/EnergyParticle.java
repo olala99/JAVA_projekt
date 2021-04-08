@@ -11,9 +11,9 @@ public class EnergyParticle{
 
 	  private int xPos = 1; // x position
 	  private int yPos = 1; // y posotion
-	  private int vX = rand.nextInt(10) -5; // x component velocity
-	  private int vY = rand.nextInt(10) -5; // y component velocity
-	  private int d = 2; // diameter of the particle
+	  private int vX = rand.nextInt(100);//-5; // x component velocity
+	  private int vY = rand.nextInt(100);//-5; // y component velocity
+	  private int d = 5; // diameter of the particle
 	  private Color color = Color.BLACK; // particle colour
     
    
@@ -47,13 +47,13 @@ public class EnergyParticle{
         return yPos;
     }
     
-    public int getD() {
+    /*public int getD() {
     	return d;
     }
     
     public void setD(int d) {
     	this.d = d;
-    }
+    }*/
 
     public Color getColor() {
 		return color;
