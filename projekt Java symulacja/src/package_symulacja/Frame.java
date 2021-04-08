@@ -1,18 +1,24 @@
+
 /* autorki: Alina i Ola
  *uklad calej ramki + menu */
+
 
 package package_symulacja;
 
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Frame extends JFrame{
 	
 	private AbsorbentButtonsPanel absorbentButtonsPanel;
+	private AnimationControlPanel animationControlPanel;
 	private ThicknessSliderPanel sliderPanel;
 	private AnimationPanel animationPanel;
 	private JPanel northPanel;
+	private JPanel rightPanel;
 	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
 	
 	private JMenu menu;
@@ -27,7 +33,9 @@ public class Frame extends JFrame{
     	this.setSize(800,500);
     	this.setLayout(new BorderLayout());
     	
+    	animationControlPanel = new AnimationControlPanel();
     	northPanel = new JPanel();
+    	rightPanel = new JPanel();
     	absorbentButtonsPanel = new AbsorbentButtonsPanel();
     	sliderPanel = new ThicknessSliderPanel();
     	absorbtionCoefficientPanel = new AbsorbtionCoefficientPanel();
@@ -39,8 +47,20 @@ public class Frame extends JFrame{
     	northPanel.add(sliderPanel);
     	this.add(northPanel, BorderLayout.NORTH);
     	
-		this.add(absorbtionCoefficientPanel,BorderLayout.EAST);
-    	
+    	rightPanel.setLayout(new GridLayout(2,1));
+		rightPanel.add(absorbtionCoefficientPanel);
+		rightPanel.add(animationControlPanel);
+		animationPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		animationControlPanel.buttonBGColor.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Color backgroundColor = JColorChooser.showDialog(getParent(), "Wybierz kolor", Color.white);
+				animationPanel.animationPanel.setBackground(backgroundColor);
+				}		
+		});
+		
+		this.add(rightPanel, BorderLayout.EAST);
+		
     	menuBar = new JMenuBar();
 		menu = new JMenu("MENU");
 		menuBar.add(menu);
@@ -58,3 +78,4 @@ public class Frame extends JFrame{
 		this.setJMenuBar(menuBar);
 	}
 }
+
