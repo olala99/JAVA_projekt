@@ -43,8 +43,6 @@ public class AnimationPanel extends JPanel {
 		animationPanel = new JPanel();
 		animationPanel.setBackground(Color.white);
 		
-		((AnimationPanel) animationPanel).addEnergyParticle(1, 1, 2, Color.BLACK);
-		
 		this.add(animationPanel,BorderLayout.CENTER);
 	}
 	
