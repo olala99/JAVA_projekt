@@ -1,0 +1,80 @@
+package package_symulacja
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.util.Random;
+import javax.swing.ImageIcon;
+
+public class EnergyParticle{
+
+	  Random rand = new Random();
+	
+    private int xPos = 0; // x position
+	  private int yPos = 0; // y posotion
+	  private int vX = rand.nextInt(10) -5; // x component velocity
+	  private int vY = rand.nextInt(10) -5; // y component velocity
+    private int radius = 2; // radius of the particle
+    private Color color = Color.BLACK; // particle colour
+    
+    public void imgC() {
+    	if(img<3) img ++; else img =0;
+    }
+    public void changeIfImg() {
+    	this.ifImg = !this.ifImg;
+    }
+    public void setVX(int vx) {
+		this.vX = vx;
+   	}
+    public void setVY(int vy) {
+		this.vY = vy;
+   	}
+    
+    public int getVX() {
+		return vX;
+  	}
+    public int getVY() {
+		return vY;
+  	}
+    
+    public int getX() {
+		return xPos;
+  	}
+
+	  public void setX(int xPos) {
+		this.xPos = xPos;
+	  }
+
+    public void setY(int yPos){
+        this.yPos = yPos;
+    }
+
+    public int getY(){
+        return yPos;
+    }
+
+    public int getWidth(){
+        return width;
+    } 
+
+    public int getHeight(){
+        return height;
+    }
+
+    public Color getColor() {
+		return color;
+  	}
+
+	  public void setColor(Color color) {
+		this.color = color;
+	  }
+
+	  public void paint(Graphics g){
+        g.setColor(getColor());
+        if(ifImg) {
+        	//if(img<3) img ++; else img =0;
+        	g.drawImage(obrazki[img], xPos, yPos, null);
+        }
+        else g.fillRect(xPos,yPos,getWidth(),getHeight());
+    }
+
+}
