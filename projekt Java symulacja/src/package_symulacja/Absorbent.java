@@ -11,8 +11,8 @@ public class Absorbent extends JComponent {
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.setColor(Color.black);
-		g.fillRect(245 - width/2, 25, width, 255);
+		g.setColor(Color.gray);
+		g.fillRect(getWidth()/2 - width/2, 5, width, getHeight());
 
 	}
 }
