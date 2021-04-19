@@ -73,17 +73,6 @@ public class Frame extends JFrame{
 		});
 	
 	}
-}
 
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				int absorbentWidth = sliderPanel.absorbentThicknessSlider.getValue();
-				animationPanel.absorbent.width = absorbentWidth * 10;
-				repaint();
-			}
-			
-		});
 	
 	}
-}
