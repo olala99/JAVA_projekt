@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class ThicknessSliderPanel extends JPanel{
 	
-	private JSlider absorbentThicknessSlider;
+	JSlider absorbentThicknessSlider;
 	private JLabel absorbentThicknessLabel;
 	
 	static final int SLIDER_MIN = 1; 
