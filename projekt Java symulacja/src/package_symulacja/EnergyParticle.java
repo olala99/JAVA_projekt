@@ -1,4 +1,5 @@
 package package_symulacja;
+
 import java.awt.Color;
 
 import java.awt.Graphics;
@@ -62,6 +63,8 @@ public class EnergyParticle{
 	  public void setColor(Color color) {
 		this.color = color;
 	  }
+	  
+
 
 	  public void paint(Graphics g){
         g.setColor(getColor());
