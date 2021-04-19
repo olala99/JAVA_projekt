@@ -1,3 +1,4 @@
+
 /*uklad calej ramki + menu */
 
 package package_symulacja;
@@ -60,6 +61,20 @@ public class Frame extends JFrame{
 		this.add(rightPanel, BorderLayout.EAST);
 		
 		sliderPanel.absorbentThicknessSlider.addChangeListener(new ChangeListener() {
+
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				int absorbentWidth = sliderPanel.absorbentThicknessSlider.getValue();
+				animationPanel.absorbent.width = absorbentWidth * 10;
+				repaint();
+			}
+			
+		});
+	
+	}
+}
+
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
