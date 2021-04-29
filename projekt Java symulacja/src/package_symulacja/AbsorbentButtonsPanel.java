@@ -15,9 +15,9 @@ import java.awt.*;
 public class AbsorbentButtonsPanel extends JPanel{
 	
 	private JLabel chooseAbsorbentLabel;
-	private AlButton buttonAl;
-	private CuButton buttonCu;
-	private PbButton buttonPb;
+	AlButton buttonAl;
+	CuButton buttonCu;
+	PbButton buttonPb;
 	
 	public AbsorbentButtonsPanel() {
 		
