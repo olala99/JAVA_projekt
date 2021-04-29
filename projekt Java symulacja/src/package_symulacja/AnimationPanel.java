@@ -43,17 +43,17 @@ public class AnimationPanel extends JPanel {
 	int incr = 1;
 	int iteracja = 0;
 	
-	public void addEnergyParticle(int x, int y, Color c, int absorbentThickness){
+	public void addEnergyParticle(int x, int y, Color c, int absorbentThickness, double absorbentType){
 		EnergyParticle particle = new EnergyParticle();
 		particle.setX(x);
 		particle.setY(y);
 		//particle.setD(d);
 		particle.setColor(c);
-// 		ustawiamy ktore czy czasteczka zniknie
+		
 		for (int i = 0; i < absorbentThickness  ; i++) {
 			
-			int randomNumber = rand.nextInt(100);
-			if(50 < rand.nextInt()) {
+			int randomNumber = rand.nextInt(1000);
+			if(Math.exp(-absorbentType) < rand.nextInt()) {
 				particle.setVisible(false);
 				licznik++;
 				i=absorbentThickness;
@@ -64,25 +64,21 @@ public class AnimationPanel extends JPanel {
 		particles.add(particle);		
 	}
 	
-	public void particleGroup(int c) {
-//		for (int i = 1; i<11 ; i++) {
-			for (int j = 1; j<100 ; j++) {
-				EnergyParticle particle = new EnergyParticle();	
-				particle.setX(c-rand.nextInt(100));
-				particle.setY(25+rand.nextInt(400));
-				particle.setColor(Color.black);
-				particles.add(particle);
-			}
-//		}
-	}
-
+//	public void particleGroup(int c) {
+////		for (int i = 1; i<11 ; i++) {
+//			for (int j = 1; j<100 ; j++) {
+//				EnergyParticle particle = new EnergyParticle();	
+//				particle.setX(c-rand.nextInt(100));
+//				particle.setY(25+rand.nextInt(400));
+//				particle.setColor(Color.black);
+//				particles.add(particle);
+//			}
+////		}
+//	}
+//
 
 
 	void moveParticles() {
-		
-//		for(int i = 0; i < 10; i++ ) {
-//			particleGroup(-i*100);
-//		}
 		
 		ScheduledExecutorService scheduler = Executors
 				.newScheduledThreadPool(2);
