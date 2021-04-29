@@ -1,4 +1,5 @@
 
+
 /*uklad calej ramki + menu */
 
 package package_symulacja;
@@ -10,6 +11,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Frame extends JFrame{
 	
@@ -20,8 +22,12 @@ public class Frame extends JFrame{
 	private JPanel northPanel;
 	private JPanel rightPanel;
 	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
-	
+	private int absorbentButton;
 	private Menu menuBar;
+	private double absorbtionCoefficient;
+	boolean running = false;
+	Random rand = new Random();
+	Timer timer;
 	
 	public Frame() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -51,6 +57,7 @@ public class Frame extends JFrame{
 		rightPanel.add(absorbtionCoefficientPanel);
 		rightPanel.add(animationControlPanel);
 		animationPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		
 		animationControlPanel.buttonBGColor.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -60,8 +67,58 @@ public class Frame extends JFrame{
 		});
 		this.add(rightPanel, BorderLayout.EAST);
 		
-		sliderPanel.absorbentThicknessSlider.addChangeListener(new ChangeListener() {
+		absorbentButtonsPanel.buttonAl.addActionListener(new ActionListener(){
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				absorbtionCoefficient = 0.13;
+//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,13 1/cm
+				
+			}
+			
+		});
+		absorbentButtonsPanel.buttonCu.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				absorbtionCoefficient = 0.43;
+//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,43 1/cm
+//				N/N0 * 100 = 100 * exp(-u * d)
+			}
+			
+		});
+		absorbentButtonsPanel.buttonPb.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				absorbtionCoefficient = 0.61;
+//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,61 1/cm
+			}
+			
+		});
+		
+		animationControlPanel.buttonOnOff.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object obj = e.getSource();
+				if(!running){
+					for (int i = 1; i < 1001; i++) animationPanel.addEnergyParticle( -500 + rand.nextInt(500), 30+rand.nextInt(370),
+							Color.black, sliderPanel.absorbentThicknessSlider.getValue(), absorbtionCoefficient);
+					System.out.println(""+absorbtionCoefficient);
+					animationPanel.moveParticles();	
+					System.out.println(""+animationPanel.licznik);
+					absorbtionCoefficientPanel.absorptionCoefficientValue.setText(" "+absorbtionCoefficient + " /cm");
+				}
+			
+		
+//				else if(running){
+//					timer.stop();
+//					running = false;
+//				}
+				}		
+		});
+		
+		sliderPanel.absorbentThicknessSlider.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -73,6 +130,4 @@ public class Frame extends JFrame{
 		});
 	
 	}
-
-	
-	}
+}
