@@ -1,4 +1,5 @@
 
+
 /*uklad calej ramki + menu */
 
 package package_symulacja;
@@ -71,7 +72,7 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				absorbtionCoefficient = 0.13;
-//				współczynnik dla 1,33 MeV = 0,13 1/cm
+//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,13 1/cm
 				
 			}
 			
@@ -81,7 +82,7 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				absorbtionCoefficient = 0.43;
-//				współczynnik dla 1,33 MeV = 0,43 1/cm
+//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,43 1/cm
 //				N/N0 * 100 = 100 * exp(-u * d)
 			}
 			
@@ -91,7 +92,7 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				absorbtionCoefficient = 0.61;
-//				współczynnik dla 1,33 MeV = 0,61 1/cm
+//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,61 1/cm
 			}
 			
 		});
