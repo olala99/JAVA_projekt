@@ -16,7 +16,7 @@ public class ThicknessSliderPanel extends JPanel{
 	
 	public ThicknessSliderPanel()
 	{
-		absorbentThicknessLabel = new JLabel("Grubosc plytki [mm]:");
+		absorbentThicknessLabel = new JLabel("Grubosc plytki [cm]:");
 		
 		absorbentThicknessSlider = new JSlider(JSlider.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_MIN);
 		
