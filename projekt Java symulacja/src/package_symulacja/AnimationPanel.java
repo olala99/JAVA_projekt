@@ -19,9 +19,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
-
-
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,48 +39,46 @@ public class AnimationPanel extends JPanel {
 	List<EnergyParticle> particles = new ArrayList<EnergyParticle>();
 	int incr = 1;
 	int iteracja = 0;
+	ScheduledExecutorService scheduler;	
 	
-	public void addEnergyParticle(int x, int y, Color c, int absorbentThickness, double absorbentType){
+	public void addEnergyParticle(int x, int y, Color c, int absorbentThickness, double absorbentType, int vx){
 		EnergyParticle particle = new EnergyParticle();
 		particle.setX(x);
 		particle.setY(y);
-		//particle.setD(d);
 		particle.setColor(c);
 		
 		for (int i = 0; i < absorbentThickness  ; i++) {
-			
-			int randomNumber = rand.nextInt(1000);
-			if(Math.exp(-absorbentType) < rand.nextInt()) {
+			double randomNumber = rand.nextDouble();
+		
+			if(Math.exp(-absorbentType) < randomNumber) {
 				particle.setVisible(false);
 				licznik++;
-				i=absorbentThickness;
+				i = absorbentThickness;
 			}
-		
 		}
 		
 		particles.add(particle);		
 	}
 	
-//	public void particleGroup(int c) {
-////		for (int i = 1; i<11 ; i++) {
-//			for (int j = 1; j<100 ; j++) {
-//				EnergyParticle particle = new EnergyParticle();	
-//				particle.setX(c-rand.nextInt(100));
-//				particle.setY(25+rand.nextInt(400));
-//				particle.setColor(Color.black);
-//				particles.add(particle);
-//			}
-////		}
-//	}
-//
-
-
-	void moveParticles() {
+	public void testParticle(int y,Color c ) {
+		EnergyParticle testParticle = new EnergyParticle();
+		testParticle.setX(-700);
+		testParticle.setY(y);
+		testParticle.setColor(c);
+		testParticle.setVX(6);
+		particles.add(testParticle);
 		
-		ScheduledExecutorService scheduler = Executors
-				.newScheduledThreadPool(2);
-
-		scheduler.scheduleAtFixedRate((new Runnable() {
+	}
+	
+	
+	void moveParticles(boolean particlesAreMoving) {
+		 
+		if(particlesAreMoving == false) {
+			
+			scheduler = Executors
+					.newScheduledThreadPool(2);
+		
+			scheduler.scheduleAtFixedRate((new Runnable() {
 
 			@Override
 			public void run() {
@@ -91,18 +86,37 @@ public class AnimationPanel extends JPanel {
 				for (EnergyParticle ep : particles){
 		         		 ep.setX( ep.getX() + ep.getVX());
 
-		         		 if(ep.getX()>getWidth()/2 && !ep.getVisible()) {
-		         			 
+		         		if(ep.getX() + 8 >= getWidth()/2 && !ep.getVisible()) {
 		         			 ep.removeParticle(getBackground());
-		         		 }
-		         		 }
-		    
+		         		}
+		         		 
+//		         		if(ep.getX() >= getWidth()) {
+//		         			 ep.removeParticle(getBackground());
+//		         		}
+		         		
+						if(particles.get(1000).getX() >= getWidth()/2) {
+							System.out.println("particles " + particles.get(1000).getX());
+							particles.clear();
+							
+							repaint();
+							scheduler.shutdown();
+					   	}    		
+				}
+				
 				repaint();
 
 			}
-		}), 0, 100, MILLISECONDS);
+			}), 0, 100, MILLISECONDS);
+			
+		}
+		
+		if(particlesAreMoving == true) {
+			scheduler.shutdown();
+			
+		}
 		
 	}
+	
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -113,22 +127,11 @@ public class AnimationPanel extends JPanel {
 	}
 	
 	public AnimationPanel() {
+	
 		this.setLayout(new BorderLayout());
-
-		absorbent = new Absorbent();
-//		 for(int i = 0; i < 10; i++ ) {
-//			 this.particleGroup(-i*100);
-//		 }
-		
-//		for (int i = 1; i < 1000; i++) this.addEnergyParticle( -520 + rand.nextInt(500), 30+rand.nextInt(370), Color.black);
-		
-//		this.moveParticles();
+		absorbent = new Absorbent(1);
 		this.add(absorbent);
-		System.out.println(""+absorbent.getSize());
-		System.out.println(""+ licznik);
-//		this.add(animationPanel,BorderLayout.CENTER);
-//		addParticles();
-		this.setBackground(Color.white);
-//		this.add(absorbent,BorderLayout.CENTER);
+		this.setBackground(Color.white);	
+		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	}
 }
