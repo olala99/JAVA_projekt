@@ -1,5 +1,4 @@
-/* autorka: Ola
- * panel dolny:
+/* panel dolny:
  * ustawienie przycisków ON/OFF i "Kolor tła ..." */
 
 package package_symulacja;
@@ -9,18 +8,24 @@ import javax.swing.*;
 
 public class AnimationControlPanel extends JPanel {
 	
-	private OnOffAnimationButton buttonOnOff;
+	OnOffAnimationButton ONButton;
 	BackgroundColorButton buttonBGColor;
+	JButton OFFButton;
+//	JButton moveAgainButton;
 	
 	public AnimationControlPanel() {
-		this.setLayout(new GridLayout(2,1));
+		this.setLayout(new GridLayout(4,1));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		buttonOnOff = new OnOffAnimationButton();
+		ONButton = new OnOffAnimationButton();
 		buttonBGColor = new BackgroundColorButton();
+		OFFButton = new JButton("OFF");
+//		moveAgainButton= new JButton("Wznów");
 		
 		this.add(buttonBGColor);
-		this.add(buttonOnOff);
+		this.add(ONButton);
+		this.add(OFFButton);
+//		this.add(moveAgainButton);
 		
 	}
 }
