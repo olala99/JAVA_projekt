@@ -94,7 +94,7 @@ public class AnimationPanel extends JPanel {
 //		         			 ep.removeParticle(getBackground());
 //		         		}
 		         		
-						if(particles.get(1000).getX() >= getWidth()/2) {
+						if(particles.get(1000).getX() >= getWidth()) {
 							System.out.println("particles " + particles.get(1000).getX());
 							particles.clear();
 							
