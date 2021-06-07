@@ -1,5 +1,3 @@
-
-
 /*uklad calej ramki + menu */
 
 package package_symulacja;
@@ -24,10 +22,12 @@ public class Frame extends JFrame{
 	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
 	private int absorbentButton;
 	private Menu menuBar;
-	private double absorbtionCoefficient;
+	private double absorbtionCoefficient = 0.13;
 	boolean running = false;
 	Random rand = new Random();
 	Timer timer;
+	boolean createNewParticles = true;
+	Color backgroundColor;
 	
 	public Frame() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -46,7 +46,7 @@ public class Frame extends JFrame{
     	sliderPanel = new ThicknessSliderPanel();
     	absorbtionCoefficientPanel = new AbsorbtionCoefficientPanel();
     	animationPanel = new AnimationPanel();
-
+    	
     	this.add(animationPanel, BorderLayout.CENTER);
     	northPanel.setLayout(new GridLayout(2,1));
     	northPanel.add(absorbentButtonsPanel);
@@ -61,7 +61,7 @@ public class Frame extends JFrame{
 		animationControlPanel.buttonBGColor.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Color backgroundColor = JColorChooser.showDialog(getParent(), "Wybierz kolor", Color.white);
+				backgroundColor = JColorChooser.showDialog(getParent(), "Wybierz kolor", Color.white);
 				animationPanel.setBackground(backgroundColor);
 				}		
 		});
@@ -72,8 +72,10 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				absorbtionCoefficient = 0.13;
-//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,13 1/cm
+//				współczynnik dla 1,33 MeV = 0,13 1/cm
 				
+				animationPanel.absorbent.shading = 1;
+				repaint();
 			}
 			
 		});
@@ -82,8 +84,11 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				absorbtionCoefficient = 0.43;
-//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,43 1/cm
+//				współczynnik dla 1,33 MeV = 0,43 1/cm
 //				N/N0 * 100 = 100 * exp(-u * d)
+				
+				animationPanel.absorbent.shading = 2;
+				repaint();
 			}
 			
 		});
@@ -92,38 +97,59 @@ public class Frame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				absorbtionCoefficient = 0.61;
-//				wspĂłĹ‚czynnik dla 1,33 MeV = 0,61 1/cm
+//				współczynnik dla 1,33 MeV = 0,61 1/cm
+				
+				animationPanel.absorbent.shading = 3;
+				repaint();
 			}
 			
 		});
 		
-		animationControlPanel.buttonOnOff.addActionListener(new ActionListener(){
+					
+		animationControlPanel.ONButton.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Object obj = e.getSource();
+				if(createNewParticles == true) {
+					int absorbentHeight = animationPanel.absorbent.getHeight();
+					for (int i = 1; i < 1001; i++) animationPanel.addEnergyParticle( -500 + rand.nextInt(500), 20 + rand.nextInt(absorbentHeight-20) ,
+								Color.black, sliderPanel.absorbentThicknessSlider.getValue(), absorbtionCoefficient,  6 + rand.nextInt(6));
+					animationPanel.testParticle(20 + absorbentHeight-100 , backgroundColor);
+				}	
 				if(!running){
-					for (int i = 1; i < 1001; i++) animationPanel.addEnergyParticle( -500 + rand.nextInt(500), 30+rand.nextInt(370),
-							Color.black, sliderPanel.absorbentThicknessSlider.getValue(), absorbtionCoefficient);
-					System.out.println(""+absorbtionCoefficient);
-					animationPanel.moveParticles();	
-					System.out.println(""+animationPanel.licznik);
-					absorbtionCoefficientPanel.absorptionCoefficientValue.setText(" "+absorbtionCoefficient + " /cm");
+				
+					animationPanel.moveParticles(false);
+					createNewParticles = false;
+					absorbtionCoefficientPanel.absorptionCoefficientValue.setText(" "+ absorbtionCoefficient + " /cm");
+					System.out.println("współczynnik: " + absorbtionCoefficient);
+					System.out.println("N0 = 1000, N = " + animationPanel.licznik);
+					System.out.println("N teoretyczne = " + 1000*Math.exp(-absorbtionCoefficient*sliderPanel.absorbentThicknessSlider.getValue()));
+					System.out.println("N0 - N = "+ (1000 - animationPanel.licznik));
+					System.out.println("grubość absorbentu = " + sliderPanel.absorbentThicknessSlider.getValue() +" cm");
+					
 				}
-			
-		
-//				else if(running){
-//					timer.stop();
-//					running = false;
-//				}
-				}		
+			}		
 		});
 		
+		
+		animationControlPanel.OFFButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				animationPanel.moveParticles(true);
+				createNewParticles = false;
+
+//				if(running){
+//					running = false;
+//				}
+			}		
+		});
+
 		sliderPanel.absorbentThicknessSlider.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				int absorbentWidth = sliderPanel.absorbentThicknessSlider.getValue();
-				animationPanel.absorbent.width = absorbentWidth * 10;
+				animationPanel.absorbent.width = absorbentWidth * 14;
 				repaint();
 			}
 			
