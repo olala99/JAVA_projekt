@@ -9,6 +9,7 @@ public class BackgroundColorButton extends JButton {
 
 	public BackgroundColorButton() {
 		super();
-		setText("Kolor tla animacji");
+		setText(Menu.resBundle.getString("background_color"));
 	}
 }
+
