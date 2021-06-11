@@ -1,4 +1,5 @@
   
+  
 /* panel gorny:
 
  * ustawienie przyciskow do wyboru absorbentow
@@ -14,18 +15,20 @@ import java.awt.*;
 
 public class AbsorbentButtonsPanel extends JPanel{
 	
-	private JLabel chooseAbsorbentLabel;
-	AlButton buttonAl;
-	CuButton buttonCu;
-	PbButton buttonPb;
+	JLabel chooseAbsorbentLabel;
+	
+	static JToggleButton buttonAl;
+	static JToggleButton buttonCu;
+	static JToggleButton buttonPb;
 	
 	public AbsorbentButtonsPanel() {
 		
-    	buttonAl = new AlButton();
-    	buttonCu = new CuButton();
-    	buttonPb = new PbButton();
+    	buttonAl = new JToggleButton("Al");
+    	buttonCu = new JToggleButton("Cu");
+    	buttonPb = new JToggleButton("Pb");
     	
-    	chooseAbsorbentLabel = new JLabel("Wybierz absorbent:");
+    	chooseAbsorbentLabel = new JLabel();
+    	chooseAbsorbentLabel.setText(Menu.resBundle.getString("choose_absorbent"));
     	
     	this.setLayout(new FlowLayout());
     	this.add(chooseAbsorbentLabel);
