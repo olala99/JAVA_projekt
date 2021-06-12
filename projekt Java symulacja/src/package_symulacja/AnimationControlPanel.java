@@ -8,18 +8,20 @@ import javax.swing.*;
 
 public class AnimationControlPanel extends JPanel {
 	
-	OnOffAnimationButton ONButton;
-	BackgroundColorButton buttonBGColor;
+	JButton ONButton;
 	JButton OFFButton;
+	JButton buttonBGColor;
+	
 //	JButton moveAgainButton;
 	
 	public AnimationControlPanel() {
 		this.setLayout(new GridLayout(4,1));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		ONButton = new OnOffAnimationButton();
-		buttonBGColor = new BackgroundColorButton();
+		ONButton = new JButton("ON");
 		OFFButton = new JButton("OFF");
+		buttonBGColor = new JButton(Menu.resBundle.getString("background_color"));
+		
 //		moveAgainButton= new JButton("Wznów");
 		
 		this.add(buttonBGColor);
@@ -29,3 +31,4 @@ public class AnimationControlPanel extends JPanel {
 		
 	}
 }
+
