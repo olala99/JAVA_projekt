@@ -12,14 +12,15 @@ public class AbsorbtionCoefficientPanel extends JPanel {
 	
 	JTextField absorptionCoefficientValue;
 	private JLabel coefficientValueLabel;
-	String absorptionCoefficient;
+	public static String absorptionCoefficient;
 	
 	public AbsorbtionCoefficientPanel() {
 		this.setLayout(new GridLayout(2,1));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
 		absorptionCoefficientValue = new JTextField();
-		coefficientValueLabel = new JLabel("Wspoczynnik oslabienia \n promieniowania:");
+		coefficientValueLabel = new JLabel();
+		coefficientValueLabel.setText(Menu.resBundle.getString("coefficient_value"));
 		
 		this.add(coefficientValueLabel);
 		this.add(absorptionCoefficientValue);
@@ -30,4 +31,5 @@ public class AbsorbtionCoefficientPanel extends JPanel {
 		this.absorptionCoefficient = text;
 	}
 }
+
 

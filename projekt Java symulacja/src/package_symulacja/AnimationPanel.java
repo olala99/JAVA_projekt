@@ -3,6 +3,12 @@
  * panel z przyciskami kontrolujacymi AnimationControlPanel */
 
 package package_symulacja;
+package package1;
+
+/* panel centralny:
+ * panel z tlem do animacji
+ * panel z przyciskami kontrolujacymi AnimationControlPanel */
+
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 
@@ -135,3 +141,4 @@ public class AnimationPanel extends JPanel {
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 	}
 }
+

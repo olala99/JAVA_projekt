@@ -1,4 +1,6 @@
 package package_symulacja;
+package package1;
+
 
 import java.awt.Color;
 
@@ -83,3 +85,5 @@ public class EnergyParticle{
     }
 
 }
+
+

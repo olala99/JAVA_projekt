@@ -2,6 +2,8 @@
 
 package package_symulacja;
 
+
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -22,12 +24,14 @@ public class Frame extends JFrame{
 	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
 	private int absorbentButton;
 	private Menu menuBar;
-	private double absorbtionCoefficient = 0.13;
+	static double absorbtionCoefficient = 0.13;
 	boolean running = false;
 	Random rand = new Random();
 	Timer timer;
 	boolean createNewParticles = true;
 	Color backgroundColor;
+	
+	//public static ResourceBundle resBundle;
 	
 	public Frame() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -43,6 +47,9 @@ public class Frame extends JFrame{
     	northPanel = new JPanel();
     	rightPanel = new JPanel();
     	absorbentButtonsPanel = new AbsorbentButtonsPanel();
+    	
+    	//absorbentButtonsPanel.chooseAbsorbentLabel.setText(Menu.resBundle.getString("choose_absorbent"));
+    	
     	sliderPanel = new ThicknessSliderPanel();
     	absorbtionCoefficientPanel = new AbsorbtionCoefficientPanel();
     	animationPanel = new AnimationPanel();
@@ -58,10 +65,12 @@ public class Frame extends JFrame{
 		rightPanel.add(animationControlPanel);
 		animationPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
+		
+		
 		animationControlPanel.buttonBGColor.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				backgroundColor = JColorChooser.showDialog(getParent(), "Wybierz kolor", Color.white);
+				backgroundColor = JColorChooser.showDialog(getParent(), "background_color", Color.white);
 				animationPanel.setBackground(backgroundColor);
 				}		
 		});
@@ -154,6 +163,19 @@ public class Frame extends JFrame{
 			}
 			
 		});
+		
+//		menuBar.english.addActionListener(new ActionListener(){
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				System.out.print("zmiana na angielski");
+//				//bundleName = "res.bundle_en";
+//				menuBar.resBundle.getBundle("res.bundle_en");
+//				
+//				
+//				//resBundle.getBundle("res.bundle_en");
+//				System.out.print("zmiana na angielski??????");
+//			}
+//			});
 	
 	}
 }
