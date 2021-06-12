@@ -32,3 +32,4 @@ public class AbsorbtionCoefficientPanel extends JPanel {
 	}
 }
 
+
