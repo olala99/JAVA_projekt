@@ -1,5 +1,6 @@
 package package_symulacja;
 
+
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
@@ -44,3 +45,4 @@ public class Absorbent extends JComponent {
 
 	}
 }
+
