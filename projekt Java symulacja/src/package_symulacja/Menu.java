@@ -1,17 +1,23 @@
 package package_symulacja;
 
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 public class Menu extends JMenuBar {
 	
@@ -74,42 +80,83 @@ public class Menu extends JMenuBar {
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					FileWriter file = new FileWriter("C:\\Users\\Alina\\Desktop\\filename.txt");
-					file.write(" Absorbent: " );
-					if(AbsorbentButtonsPanel.buttonAl.isSelected() == true) {
-						file.write("Al");
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setDialogTitle("Zapisz jako/Save as");
+				int result = fileChooser.showDialog(null, "Zapisz/Save");
+				FileOutputStream outputStream = null;
+
+				if (JFileChooser.APPROVE_OPTION == result) {
+					if (result != JFileChooser.APPROVE_OPTION) {
+						return;
 					}
-					else if (AbsorbentButtonsPanel.buttonCu.isSelected() == true){
-						file.write("Cu");
+					try {
+						File file = fileChooser.getSelectedFile();
+						String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+						if (!fileName.endsWith(".txt")) {
+							fileName += ".txt";
+							file = new File(fileName);
+						}
+						outputStream = new FileOutputStream(file.getAbsolutePath()); 
+						OutputStreamWriter streamWriter = new OutputStreamWriter(outputStream, Charset.forName("UTF-8").newEncoder()); 
+						BufferedWriter bufferedWriter = new BufferedWriter(streamWriter); 
+						bufferedWriter.write(" Absorbent: ");
+						
+						if(AbsorbentButtonsPanel.buttonAl.isSelected() == true) {
+							bufferedWriter.write("Al");
+						}
+						else if (AbsorbentButtonsPanel.buttonCu.isSelected() == true){
+							bufferedWriter.write("Cu");
+						}
+						else {
+							bufferedWriter.write("Pb");
+						}
+						bufferedWriter.write("\n Grubość absorbentu (absorbent's width): " + ThicknessSliderPanel.absorbentThicknessSlider.getValue() + " cm" );
+						bufferedWriter.write("\n Współczynnik osłabienia (absorption coefficient): " + Frame.absorbtionCoefficient +" 1/cm");
+						bufferedWriter.close();
 					}
-					else {
-						file.write("Pb");
+					catch(IOException ex){
+						   System.out.println("An error occurred.");
+						}
+					try {
+						outputStream.close(); 
+					} 
+					catch (IOException e1) {
+					   e1.printStackTrace();
 					}
-					file.write("\n Grubość absorbentu (absorbent's width): " + ThicknessSliderPanel.absorbentThicknessSlider.getValue() + " cm" );
-					file.write("\n Współczynnik osłabienia (absorption coefficient): " + Frame.absorbtionCoefficient +" 1/cm");
-					file.close();
-				}
-//				
-				catch (IOException e2) {
-				      System.out.println("An error occurred.");
-				      e2.printStackTrace();
 				}
 			}
-			});
+		});
+					
 		
 		read.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				   try {
-					      File file2 = new File("filename2.txt");
-					      Scanner reader = new Scanner(file2);
-					      while (reader.hasNextLine()) {
-					        String data = reader.nextLine();
-					        System.out.println(data);
-					      }
-					      reader.close();
-					    } catch (FileNotFoundException e2) {
+					   	  JFileChooser fileChooser = new JFileChooser();
+					   	  int returnVal = fileChooser.showOpenDialog(getParent());
+					   	if (returnVal == JFileChooser.APPROVE_OPTION) {
+						       File file = fileChooser.getSelectedFile();
+						       System.out.println("Selected file: " + file.getAbsolutePath());
+						       
+						       Scanner reader = new Scanner(file);
+						       
+						       while(reader.hasNext()) {
+							    	  String[] tokens = reader.nextLine().split(";");
+							          String first = tokens[0];
+							          String second = tokens[1];
+							          System.out.println("Grubość absorbentu: " + first);
+							          System.out.println("Współczynnik: " + second);
+							          int thickness = Integer.parseInt(first);
+							          double coefficient =  Double.parseDouble(second);
+							          //Absorbent.g2.setColor(Color.black);
+							          ThicknessSliderPanel.absorbentThicknessSlider.setValue(thickness);
+							          Frame.absorbtionCoefficient = coefficient;
+							      }
+						       reader.close();
+						   }
+					   	  
+					    } 
+				   	catch (FileNotFoundException e2) {
 					      System.out.println("An error occurred.");
 					      e2.printStackTrace();
 					    }
@@ -119,5 +166,4 @@ public class Menu extends JMenuBar {
 		this.add(menu);
 	}
 }
-
 
