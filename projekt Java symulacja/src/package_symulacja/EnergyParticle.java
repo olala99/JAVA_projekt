@@ -50,19 +50,11 @@ public class EnergyParticle{
         return yPos;
     }
     
-    /*public int getD() {
-    	return d;
-    }
-    
-    public void setD(int d) {
-    	this.d = d;
-    }*/
-
     public Color getColor() {
 		return color;
   	}
 
-	 public void setColor(Color color) {
+	public void setColor(Color color) {
 		 this.color = color;
 	 }
 	 
