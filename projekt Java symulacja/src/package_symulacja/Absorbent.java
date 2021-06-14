@@ -1,9 +1,7 @@
 package package_symulacja;
 
-
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-
 import javax.swing.*;
 
 public class Absorbent extends JComponent {
@@ -40,9 +38,6 @@ public class Absorbent extends JComponent {
 	    g2.setColor(Color.black);
 	    g2.setStroke(new BasicStroke(1));
 	    g2.draw(absorbentEdge);
-//		g.setColor(Color.gray);
-//		g.fillRect(getWidth()/2 - width/2, 5, width, getHeight());
-
 	}
 }
 
