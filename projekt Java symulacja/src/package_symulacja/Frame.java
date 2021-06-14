@@ -2,12 +2,9 @@
 
 package package_symulacja;
 
-
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,8 +27,7 @@ public class Frame extends JFrame{
 	Timer timer;
 	boolean createNewParticles = true;
 	Color backgroundColor;
-	
-	//public static ResourceBundle resBundle;
+
 	
 	public Frame() {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -48,8 +44,6 @@ public class Frame extends JFrame{
     	rightPanel = new JPanel();
     	absorbentButtonsPanel = new AbsorbentButtonsPanel();
     	
-    	//absorbentButtonsPanel.chooseAbsorbentLabel.setText(Menu.resBundle.getString("choose_absorbent"));
-    	
     	sliderPanel = new ThicknessSliderPanel();
     	absorbtionCoefficientPanel = new AbsorbtionCoefficientPanel();
     	animationPanel = new AnimationPanel();
@@ -64,8 +58,6 @@ public class Frame extends JFrame{
 		rightPanel.add(absorbtionCoefficientPanel);
 		rightPanel.add(animationControlPanel);
 		animationPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		
-		
 		
 		animationControlPanel.buttonBGColor.addActionListener(new ActionListener(){
 			@Override
@@ -146,10 +138,6 @@ public class Frame extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				animationPanel.moveParticles(true);
 				createNewParticles = false;
-
-//				if(running){
-//					running = false;
-//				}
 			}		
 		});
 
@@ -163,19 +151,6 @@ public class Frame extends JFrame{
 			}
 			
 		});
-		
-//		menuBar.english.addActionListener(new ActionListener(){
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				System.out.print("zmiana na angielski");
-//				//bundleName = "res.bundle_en";
-//				menuBar.resBundle.getBundle("res.bundle_en");
-//				
-//				
-//				//resBundle.getBundle("res.bundle_en");
-//				System.out.print("zmiana na angielski??????");
-//			}
-//			});
 	
 	}
 }
