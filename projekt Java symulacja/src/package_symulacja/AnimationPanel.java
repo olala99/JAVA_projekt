@@ -3,7 +3,7 @@
  * panel z przyciskami kontrolujacymi AnimationControlPanel */
 
 package package_symulacja;
-package package1;
+
 
 
 
