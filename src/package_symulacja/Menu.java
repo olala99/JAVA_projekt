@@ -66,8 +66,8 @@ public class Menu extends JMenuBar {
 						else {
 							bufferedWriter.write("Pb");
 						}
-						bufferedWriter.write("\n Grubość absorbentu: " + ThicknessSliderPanel.absorbentThicknessSlider.getValue() + " cm" );
-						bufferedWriter.write("\n Współczynnik osłabienia: " + Frame.absorbtionCoefficient +" 1/cm");
+						bufferedWriter.write("\n Grubosc absorbentu: " + ThicknessSliderPanel.absorbentThicknessSlider.getValue() + " cm" );
+						bufferedWriter.write("\n Wspolczynnik oslabienia: " + Frame.absorbtionCoefficient +" 1/cm");
 						bufferedWriter.close();
 					}
 					catch(IOException ex){
@@ -100,8 +100,8 @@ public class Menu extends JMenuBar {
 							    	  String[] tokens = reader.nextLine().split(";");
 							          String first = tokens[0];
 							          String second = tokens[1];
-							          System.out.println("Grubość absorbentu: " + first);
-							          System.out.println("Współczynnik: " + second);
+							          System.out.println("Grubosc absorbentu: " + first);
+							          System.out.println("Wspolczynnik: " + second);
 							          int thickness = Integer.parseInt(first);
 							          double coefficient =  Double.parseDouble(second);
 							          ThicknessSliderPanel.absorbentThicknessSlider.setValue(thickness);

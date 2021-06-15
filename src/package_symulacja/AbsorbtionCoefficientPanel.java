@@ -20,7 +20,7 @@ public class AbsorbtionCoefficientPanel extends JPanel {
 
 		absorptionCoefficientValue = new JTextField();
 		coefficientValueLabel = new JLabel();
-		coefficientValueLabel.setText("Współczynnik \n osłabienia");
+		coefficientValueLabel.setText("Wspolczynnik oslabienia");
 		
 		this.add(coefficientValueLabel);
 		this.add(absorptionCoefficientValue);

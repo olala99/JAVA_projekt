@@ -18,7 +18,7 @@ public class AnimationControlPanel extends JPanel {
 
 		ONButton = new JButton("ON");
 		OFFButton = new JButton("OFF");
-		buttonBGColor = new JButton("Kolor tła");
+		buttonBGColor = new JButton("Kolor tla");
 		
 		this.add(buttonBGColor);
 		this.add(ONButton);
