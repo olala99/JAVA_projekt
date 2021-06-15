@@ -10,19 +10,26 @@ import javax.swing.*;
 
 public class AbsorbtionCoefficientPanel extends JPanel {
 	
-	private JTextField absorptionCoefficientValue;
+	JTextField absorptionCoefficientValue;
 	private JLabel coefficientValueLabel;
+	public static String absorptionCoefficient;
 	
 	public AbsorbtionCoefficientPanel() {
 		this.setLayout(new GridLayout(2,1));
 		this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		absorptionCoefficientValue = new JTextField(" ");
-		coefficientValueLabel = new JLabel("Wspoczynnik oslabienia \n promieniowania:");
+		absorptionCoefficientValue = new JTextField();
+		coefficientValueLabel = new JLabel();
+		coefficientValueLabel.setText("Wspolczynnik oslabienia");
 		
 		this.add(coefficientValueLabel);
 		this.add(absorptionCoefficientValue);
 		
 	}
+	
+	public void setText(String text) {
+		this.absorptionCoefficient = text;
+	}
 }
+
 
