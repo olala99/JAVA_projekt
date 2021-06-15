@@ -9,7 +9,7 @@ import javax.swing.*;
 public class Absorbent extends JComponent {
 
 	int width;
-	int shading = 1;
+	public static int shading = 1;
 	Color c0 = Color.gray;
 	Color c1 = Color.LIGHT_GRAY;
 	
@@ -31,6 +31,12 @@ public class Absorbent extends JComponent {
 			c0 = Color.DARK_GRAY;
 			c1 = Color.GRAY;
 		}
+		else if(shading == 4) {
+			c0 = Color.black; 
+			c1 = Color.LIGHT_GRAY;
+		}
+		
+		
 		Graphics2D g2 = (Graphics2D)g;
 		Rectangle2D absorbent = new Rectangle2D.Double(getWidth()/2 - width/2, 5, width, getHeight());
 		Rectangle2D absorbentEdge = new Rectangle2D.Double(getWidth()/2 - width/2, 5, width, getHeight()-6);
