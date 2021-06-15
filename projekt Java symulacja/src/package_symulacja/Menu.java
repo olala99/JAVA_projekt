@@ -20,10 +20,8 @@ import java.io.FileOutputStream;
 public class Menu extends JMenuBar {
 	
 	private JMenu menu;
-	private JMenu language;
 	private JMenuItem read;
 	private JMenuItem save;
-	private JMenuItem clean;
 
 	
 	public Menu() {
@@ -31,11 +29,9 @@ public class Menu extends JMenuBar {
 		
 		read = new JMenuItem("Wczytaj");
 		save = new JMenuItem("Zapisz");
-// 		clean = new JMenuItem("Wyczyść");
 		
 		menu.add(read);
 		menu.add(save);
-// 		menu.add(clean);
 		
 		save.addActionListener(new ActionListener(){
 			@Override
