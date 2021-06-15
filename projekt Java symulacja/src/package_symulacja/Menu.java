@@ -106,6 +106,8 @@ public class Menu extends JMenuBar {
 							          double coefficient =  Double.parseDouble(second);
 							          ThicknessSliderPanel.absorbentThicknessSlider.setValue(thickness);
 							          Frame.absorbtionCoefficient = coefficient;
+							          Absorbent.shading = 4;
+
 							      }
 						       reader.close();
 						   }
