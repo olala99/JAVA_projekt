@@ -15,7 +15,7 @@ public class Frame extends JFrame{
 	private AbsorbentButtonsPanel absorbentButtonsPanel;
 	private AnimationControlPanel animationControlPanel;
 	private ThicknessSliderPanel sliderPanel;
-	private AnimationPanel animationPanel;
+	static AnimationPanel animationPanel;
 	private JPanel northPanel;
 	private JPanel rightPanel;
 	private AbsorbtionCoefficientPanel absorbtionCoefficientPanel;
