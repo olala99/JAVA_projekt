@@ -32,8 +32,8 @@ public class Absorbent extends JComponent {
 			c1 = Color.GRAY;
 		}
 		else if(shading == 4) {
-			c0 = Color.black; 
-			c1 = Color.LIGHT_GRAY;
+			c0 = Color.LIGHT_GRAY;
+			c1 = Color.black; 
 		}
 		
 		
@@ -46,8 +46,6 @@ public class Absorbent extends JComponent {
 	    g2.setColor(Color.black);
 	    g2.setStroke(new BasicStroke(1));
 	    g2.draw(absorbentEdge);
-//		g.setColor(Color.gray);
-//		g.fillRect(getWidth()/2 - width/2, 5, width, getHeight());
 
 	}
 }
