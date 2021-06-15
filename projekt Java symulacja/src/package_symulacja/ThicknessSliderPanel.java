@@ -3,7 +3,6 @@
 
 package package_symulacja;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ResourceBundle;
@@ -18,8 +17,7 @@ public class ThicknessSliderPanel extends JPanel{
 	
 	public ThicknessSliderPanel()
 	{
-		//absorbentThicknessLabel = new JLabel("thickness:");
-		absorbentThicknessLabel = new JLabel(Menu.resBundle.getString("thickness"));
+		absorbentThicknessLabel = new JLabel("Grubość absorbentu [cm]: ");
 		
 		absorbentThicknessSlider = new JSlider(JSlider.HORIZONTAL, SLIDER_MIN, SLIDER_MAX, SLIDER_MIN);
 		

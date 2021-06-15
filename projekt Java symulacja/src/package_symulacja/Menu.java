@@ -1,7 +1,5 @@
 package package_symulacja;
 
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,67 +20,25 @@ import java.io.FileOutputStream;
 public class Menu extends JMenuBar {
 	
 	private JMenu menu;
-	private JMenu language;
 	private JMenuItem read;
 	private JMenuItem save;
-	private JMenuItem clean;
-	private JMenuItem english;
-	private JMenuItem polish;
-	
-	public static Locale locale_en;
-	public static Locale locale_pl;
-	public static ResourceBundle resBundle; 
 
-	//String bundleName;
 	
 	public Menu() {
 		menu = new JMenu("MENU");
-
-		locale_en = new Locale("en");
-		locale_pl = new Locale("pl");
-		resBundle = ResourceBundle.getBundle("res.bundle", locale_pl);
 		
-		language = new JMenu(resBundle.getString("language"));
-		read = new JMenuItem(resBundle.getString("read"));
-		save = new JMenuItem(resBundle.getString("save"));
-		clean = new JMenuItem(resBundle.getString("clean"));
-		english = new JMenuItem(resBundle.getString("en"));
-		polish = new JMenuItem(resBundle.getString("pl"));
+		read = new JMenuItem("Wczytaj");
+		save = new JMenuItem("Zapisz");
 		
-//		ResourceBundle resBundle = ResourceBundle.getBundle("res.bundle", locale_pl);
-		
-		menu.add(language);
-		language.add(english);
-		language.add(polish);
 		menu.add(read);
 		menu.add(save);
-		menu.add(clean);
-		
-		english.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("zmiana na angielski");
-				resBundle.clearCache();
-				resBundle.getBundle("res.bundle_en", locale_en);
-				System.out.println("zmiana na angielski??????");
-			}
-			});
-			
-		
-		polish.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("zmiana na polski");
-				resBundle.getBundle("res.bundle");
-			}
-			});
 		
 		save.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("Zapisz jako/Save as");
-				int result = fileChooser.showDialog(null, "Zapisz/Save");
+				fileChooser.setDialogTitle("Zapisz jako");
+				int result = fileChooser.showDialog(null, "Zapisz");
 				FileOutputStream outputStream = null;
 
 				if (JFileChooser.APPROVE_OPTION == result) {
@@ -110,8 +66,8 @@ public class Menu extends JMenuBar {
 						else {
 							bufferedWriter.write("Pb");
 						}
-						bufferedWriter.write("\n Grubość absorbentu (absorbent's width): " + ThicknessSliderPanel.absorbentThicknessSlider.getValue() + " cm" );
-						bufferedWriter.write("\n Współczynnik osłabienia (absorption coefficient): " + Frame.absorbtionCoefficient +" 1/cm");
+						bufferedWriter.write("\n Grubość absorbentu: " + ThicknessSliderPanel.absorbentThicknessSlider.getValue() + " cm" );
+						bufferedWriter.write("\n Współczynnik osłabienia: " + Frame.absorbtionCoefficient +" 1/cm");
 						bufferedWriter.close();
 					}
 					catch(IOException ex){
@@ -148,9 +104,10 @@ public class Menu extends JMenuBar {
 							          System.out.println("Współczynnik: " + second);
 							          int thickness = Integer.parseInt(first);
 							          double coefficient =  Double.parseDouble(second);
-							          //Absorbent.g2.setColor(Color.black);
 							          ThicknessSliderPanel.absorbentThicknessSlider.setValue(thickness);
 							          Frame.absorbtionCoefficient = coefficient;
+							          Absorbent.shading = 4;
+
 							      }
 						       reader.close();
 						   }

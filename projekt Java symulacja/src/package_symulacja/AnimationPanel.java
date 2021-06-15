@@ -3,16 +3,11 @@
  * panel z przyciskami kontrolujacymi AnimationControlPanel */
 
 package package_symulacja;
-package package1;
 
-/* panel centralny:
- * panel z tlem do animacji
- * panel z przyciskami kontrolujacymi AnimationControlPanel */
-
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,16 +18,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-
 import javax.imageio.ImageIO;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-
 import javax.swing.*;
 
 public class AnimationPanel extends JPanel {
@@ -73,7 +65,6 @@ public class AnimationPanel extends JPanel {
 		testParticle.setColor(c);
 		testParticle.setVX(6);
 		particles.add(testParticle);
-		
 	}
 	
 	
@@ -88,25 +79,19 @@ public class AnimationPanel extends JPanel {
 
 			@Override
 			public void run() {
-//				EnergyParticle ep;
 				for (EnergyParticle ep : particles){
 		         		 ep.setX( ep.getX() + ep.getVX());
 
 		         		if(ep.getX() + 8 >= getWidth()/2 && !ep.getVisible()) {
 		         			 ep.removeParticle(getBackground());
 		         		}
-		         		 
-//		         		if(ep.getX() >= getWidth()) {
-//		         			 ep.removeParticle(getBackground());
-//		         		}
-		         		
-						if(particles.get(1000).getX() >= getWidth()) {
-							System.out.println("particles " + particles.get(1000).getX());
-							particles.clear();
+					if(particles.get(1000).getX() >= getWidth()) {
+						System.out.println("particles " + particles.get(1000).getX());
+						particles.clear();
 							
-							repaint();
-							scheduler.shutdown();
-					   	}    		
+						repaint();
+						scheduler.shutdown();
+					}    		
 				}
 				
 				repaint();
